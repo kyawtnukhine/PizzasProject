@@ -2,8 +2,14 @@
 @extends('layout.layout')  
 @section("content")
 <div class="continer">
+{{-- <h1>{{$data}}</h1> --}}
+{{-- <h1>{{ $pizza[2]['user_name'] }}</h1> --}}
+@if(session('delete'))
+<div class="alert alert-danger mt-3 mb-3" role="alert" >
+  {{session('delete')}}
+</div>
+@endif
 <table class="table">
-
     <thead>
       <tr>
         <th scope="col">Id </th>
@@ -17,36 +23,19 @@
       </tr>
     </thead>
     <tbody>
+      @foreach($pizzas as $pizza)
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>9.99$</td>
-        <td><button class="btn tbn-sm btn-warning"  data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Order</button></td>
-        <td><button class="btn tbn-sm btn-success">Order Complete</button></td>
+        <td scope="row">{{$pizza['id']}}</td>
+        <td scope="row">{{$pizza['user_name']}}</td>
+        <td scope="row">{{$pizza['pizza_name']}}</td>
+        <td scope="row">{{$pizza['topping']}}</td>
+        <td scope="row">{{$pizza['Sauce']}}</td>
+        <td scope="row">{{$pizza['price']}}$</td>
+        <td><button class="btn tbn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Order</button></td>
+        <td><a class="btn btn-sm btn-success" href="{{ route('delete', $pizza->id) }}">Order Complete</a> </td>
+      
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>@fat</td>
-        <td>9.99$</td>
-        <td><button class="btn tbn-sm btn-warning"  data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Order</button></td>
-        <td><button class="btn tbn-sm btn-success">Order Complete</button></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-        <td>@twitter</td>
-        <td>9.99$</td>
-        <td><button class="btn tbn-sm btn-warning"  data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Order</button></td>
-        <td><button class="btn tbn-sm btn-success">Order Complete</button></td>
-      </tr>
+      @endforeach
     </tbody>
   </table>
   

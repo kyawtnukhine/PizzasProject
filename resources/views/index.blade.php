@@ -3,6 +3,7 @@
 <div class="container">
   <h1 class="grey-text mt-4 d-inline">Order Pizza</h1>
   <img src="{{asset('image/pizza2.jpg')}}" alt="" width="200px" height="200px" class="img-responsive mt-4 ">
+
   @if(Session('success'))
   <div class="alert alert-success" role="alert">
     {{Session('success')}}
@@ -49,5 +50,4 @@
     <button type="submit" class="btn btn-primary">Submit Order</button>
   </form>
 </div>
-
     @endsection
